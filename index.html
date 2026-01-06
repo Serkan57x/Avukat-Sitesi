@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="tr" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Av. Merve Aydoğan | Hukuk & Danışmanlık</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'cream-light': '#FDFCF8',
+                        'cream-dark': '#F2EFE9',
+                        'gold-accent': '#C5A059',
+                        'gold-matte': '#B08D55',
+                        'text-dark': '#2A2422',
+                        'text-gray': '#635B55',
+                    },
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Lato"', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background: radial-gradient(circle at 10% 20%, #FDFCF8 0%, #F2EFE9 90%);
+            color: #362F2D;
+        }
+
+        /* Logo Estetiği */
+        .logo-print-look {
+            mix-blend-mode: multiply;
+            filter: contrast(0.95) sepia(0.3) opacity(0.85);
+            transition: all 0.6s ease;
+        }
+
+        .logo-print-look:hover {
+            filter: contrast(1) sepia(0.1) opacity(1);
+            transform: scale(1.02);
+        }
+
+        /* Mühür Çerçevesi */
+        .seal-circle {
+            background: linear-gradient(135deg, #FCFAF7, #EAE6DF);
+            border: 1px solid rgba(197, 160, 89, 0.2);
+            box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.8), 0 15px 35px -5px rgba(176, 141, 85, 0.15);
+        }
+
+        /* Altın Metin Efekti */
+        .gold-text-matte {
+            background: linear-gradient(to right, #9E824C, #D4AF37, #9E824C);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Dalga Arkaplan */
+        .gold-wave-bg {
+            background: linear-gradient(135deg, transparent 40%, rgba(197, 160, 89, 0.05) 60%, rgba(197, 160, 89, 0.3) 100%);
+        }
+
+        /* Animasyonlar */
+        @keyframes slideUpSmooth {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-smooth {
+            animation: slideUpSmooth 1.2s cubic-bezier(0.2, 1, 0.3, 1) forwards;
+        }
+    </style>
+</head>
+
+<body class="font-sans antialiased min-h-screen flex flex-col relative overflow-x-hidden">
+
+    <nav
+        class="fixed w-full z-50 py-5 bg-[#FDFCF8]/95 backdrop-blur-md border-b border-gold-accent/10 transition-all shadow-sm">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 flex justify-between items-center h-16">
+
+            <a href="#" class="flex items-center gap-5 select-none cursor-pointer group">
+                <img src="logo.png" onerror="this.src='https://via.placeholder.com/150x150?text=Logo'"
+                    class="h-14 w-auto object-contain mix-blend-multiply opacity-90 group-hover:opacity-100 transition">
+
+                <div class="h-10 w-px bg-gold-matte/40 rounded-full"></div>
+
+                <div class="flex flex-col justify-center">
+                    <span class="font-serif font-bold text-sm text-text-dark tracking-widest leading-none mb-1">MERVE
+                        AYDOĞAN</span>
+                    <span
+                        class="text-[9px] text-gold-matte font-semibold tracking-[0.25em] uppercase leading-none">Hukuk
+                        & Danışmanlık</span>
+                </div>
+            </a>
+
+            <div class="hidden md:flex items-center gap-10">
+                <a href="#anasayfa"
+                    class="text-[11px] font-bold text-text-dark/80 uppercase tracking-widest hover:text-gold-accent transition">Anasayfa</a>
+                <a href="#hakkimda"
+                    class="text-[11px] font-bold text-text-dark/80 uppercase tracking-widest hover:text-gold-accent transition">Hakkımda</a>
+                <a href="#iletisim"
+                    class="text-[11px] font-bold text-text-dark uppercase tracking-widest border border-text-dark/20 px-6 py-2.5 hover:bg-gold-accent hover:border-gold-accent hover:text-white transition duration-300">İletişim</a>
+            </div>
+
+            <button id="mobile-menu-btn" class="md:hidden text-xl text-text-dark p-2">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <div id="mobile-menu"
+            class="hidden md:hidden absolute top-full left-0 w-full bg-[#FDFCF8] border-b border-gold-accent/10 py-4 px-6 flex-col gap-4 shadow-lg">
+            <a href="#anasayfa"
+                class="block text-sm font-bold text-text-dark uppercase tracking-widest py-2">Anasayfa</a>
+            <a href="#hakkimda"
+                class="block text-sm font-bold text-text-dark uppercase tracking-widest py-2">Hakkımda</a>
+            <a href="#iletisim"
+                class="block text-sm font-bold text-gold-accent uppercase tracking-widest py-2">İletişim</a>
+        </div>
+    </nav>
+
+    <section id="anasayfa" class="relative w-full min-h-screen flex items-center pt-20 overflow-hidden">
+        <div class="absolute bottom-0 right-0 w-full h-[60vh] gold-wave-bg pointer-events-none z-0"></div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 w-full relative z-10">
+            <div class="grid lg:grid-cols-12 gap-8 items-center">
+
+                <div class="lg:col-span-7 animate-smooth flex flex-col justify-center pl-2">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="h-[1px] w-12 bg-gold-matte"></span>
+                        <span class="text-gold-matte tracking-[0.3em] text-[10px] font-bold uppercase">İstanbul
+                            Barosu</span>
+                    </div>
+
+                    <h1
+                        class="font-serif text-[2.8rem] md:text-[3.5rem] lg:text-[4.8rem] leading-[1.1] text-text-dark mb-6">
+                        Hukuki Süreçlerde <br>
+                        <span class="gold-text-matte italic font-medium pr-2">Güven ve Disiplin</span> <br>
+                        Odaklı Yaklaşım
+                    </h1>
+
+                    <p
+                        class="text-text-gray text-lg font-light leading-relaxed max-w-lg mb-8 pl-6 border-l border-gold-accent/30">
+                        Av. Merve Aydoğan, hukuki sorunlarınıza stratejik bakış açısı, şeffaflık ve sonuç odaklı
+                        profesyonel danışmanlık sunar.
+                    </p>
+
+                    <div class="flex flex-wrap gap-5">
+                        <a href="#iletisim"
+                            class="bg-gold-accent text-white px-9 py-4 text-[11px] font-bold uppercase tracking-[0.2em] shadow-lg hover:bg-[#b5924b] transition-all hover:shadow-xl transform hover:-translate-y-0.5">
+                            Randevu Talebi
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 flex justify-center lg:justify-end animate-smooth"
+                    style="animation-delay: 0.15s;">
+                    <div class="hidden lg:flex justify-end w-full">
+                        <div
+                            class="relative w-full max-w-[500px] aspect-square rounded-full seal-circle flex items-center justify-center p-16 select-none">
+                            <img src="logo.png" onerror="this.style.display='none'" alt="Av. Merve Aydoğan Logo"
+                                class="w-full h-auto object-contain logo-print-look">
+                            <span class="absolute text-6xl font-serif text-gold-accent/20 font-bold -z-10">M.A</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div
+            class="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50 hover:opacity-100 transition duration-500 cursor-pointer animate-bounce">
+            <span class="text-[9px] uppercase tracking-widest text-text-gray font-semibold">Aşağı Kaydır</span>
+            <i class="fa-solid fa-chevron-down text-gold-accent text-xs"></i>
+        </div>
+    </section>
+
+    <section id="hakkimda" class="py-24 relative bg-white/40">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+                <div class="space-y-8">
+                    <div>
+                        <span
+                            class="text-gold-matte font-bold text-xs tracking-[0.2em] uppercase block mb-3">Hakkımda</span>
+                        <h2 class="font-serif text-4xl md:text-5xl text-text-dark leading-tight">
+                            Hukukun Üstünlüğüne <br>
+                            <span class="italic text-gold-matte">Modern Bakış</span>
+                        </h2>
+                    </div>
+
+                    <p class="text-text-dark text-lg leading-relaxed font-light">
+                        Av. Merve Aydoğan, İstanbul Üniversitesi Hukuk Fakültesi’nden 2019 yılında mezun olmuş olup,
+                        avukatlık faaliyetlerini kendi hukuk bürosunda sürdürmektedir. Mesleki yaklaşımının merkezinde,
+                        müvekkillerine güven veren, şeffaf ve çözüm odaklı bir hizmet anlayışı yer almaktadır.
+                    </p>
+
+                    <p class="text-text-gray text-base leading-relaxed">
+                        Her dosyanın kendine özgü dinamikler barındırdığı bilinciyle hareket eden Av. Aydoğan, hukuki
+                        süreci başından sonuna kadar bizzat takip etmekte; müvekkillerini sürecin her aşamasında açık ve
+                        anlaşılır biçimde bilgilendirmeye önem vermektedir.
+                    </p>
+
+                    <div class="flex items-center gap-4 pt-4">
+                        <img src="imza.png" onerror="this.style.display='none'" class="h-12 opacity-60">
+                        <div class="h-px flex-1 bg-gold-accent/20"></div>
+                        <span class="font-serif font-bold text-text-dark">Av. Merve Aydoğan</span>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4 md:gap-6">
+
+                    <div
+                        class="aspect-square bg-cream-light border border-gold-accent/10 p-6 flex flex-col justify-center items-center text-center hover:shadow-lg hover:border-gold-accent/40 transition duration-300 group cursor-default">
+                        <div
+                            class="w-12 h-12 bg-cream-dark rounded-full flex items-center justify-center mb-4 group-hover:bg-gold-accent group-hover:text-white transition">
+                            <i class="fa-solid fa-scale-balanced text-xl text-gold-matte group-hover:text-white"></i>
+                        </div>
+                        <h4 class="font-serif text-lg text-text-dark mb-2">Şeffaflık</h4>
+                        <p class="text-xs text-text-gray leading-normal">Sürecin her aşamasında açık ve net
+                            bilgilendirme.</p>
+                    </div>
+
+                    <div
+                        class="aspect-square bg-cream-light border border-gold-accent/10 p-6 flex flex-col justify-center items-center text-center hover:shadow-lg hover:border-gold-accent/40 transition duration-300 group cursor-default">
+                        <div
+                            class="w-12 h-12 bg-cream-dark rounded-full flex items-center justify-center mb-4 group-hover:bg-gold-accent group-hover:text-white transition">
+                            <i class="fa-solid fa-handshake text-xl text-gold-matte group-hover:text-white"></i>
+                        </div>
+                        <h4 class="font-serif text-lg text-text-dark mb-2">Güven</h4>
+                        <p class="text-xs text-text-gray leading-normal">Müvekkil mahremiyetine ve etik değerlere
+                            bağlılık.</p>
+                    </div>
+
+                    <div
+                        class="aspect-square bg-cream-light border border-gold-accent/10 p-6 flex flex-col justify-center items-center text-center hover:shadow-lg hover:border-gold-accent/40 transition duration-300 group cursor-default">
+                        <div
+                            class="w-12 h-12 bg-cream-dark rounded-full flex items-center justify-center mb-4 group-hover:bg-gold-accent group-hover:text-white transition">
+                            <i class="fa-solid fa-bullseye text-xl text-gold-matte group-hover:text-white"></i>
+                        </div>
+                        <h4 class="font-serif text-lg text-text-dark mb-2">Çözüm Odaklı</h4>
+                        <p class="text-xs text-text-gray leading-normal">Hukuki sorunlara pratik ve sürdürülebilir
+                            çözümler.</p>
+                    </div>
+
+                    <div
+                        class="aspect-square bg-cream-light border border-gold-accent/10 p-6 flex flex-col justify-center items-center text-center hover:shadow-lg hover:border-gold-accent/40 transition duration-300 group cursor-default">
+                        <div
+                            class="w-12 h-12 bg-cream-dark rounded-full flex items-center justify-center mb-4 group-hover:bg-gold-accent group-hover:text-white transition">
+                            <i class="fa-solid fa-gavel text-xl text-gold-matte group-hover:text-white"></i>
+                        </div>
+                        <h4 class="font-serif text-lg text-text-dark mb-2">Disiplin</h4>
+                        <p class="text-xs text-text-gray leading-normal">Dosya takibinde titiz ve detaycı çalışma
+                            prensibi.</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="iletisim" class="w-full bg-[#F2EFE9] border-t border-gold-accent/20 relative py-20">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-20">
+
+                <div class="bg-white p-8 md:p-10 shadow-2xl border-t-4 border-gold-matte">
+                    <h3 class="font-serif text-2xl text-text-dark mb-2">Bize Ulaşın</h3>
+                    <p class="text-sm text-text-gray mb-8">Hukuki danışmanlık talepleriniz için aşağıdaki formu
+                        doldurabilirsiniz.</p>
+
+                    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="space-y-6">
+
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-widest text-text-gray mb-2">Adınız
+                                Soyadınız</label>
+                            <input type="text" name="name" required
+                                class="w-full bg-[#FDFCF8] border border-gray-200 p-3 focus:outline-none focus:border-gold-accent transition text-text-dark placeholder-gray-400">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-widest text-text-gray mb-2">E-Posta
+                                Adresiniz</label>
+                            <input type="email" name="email" required
+                                class="w-full bg-[#FDFCF8] border border-gray-200 p-3 focus:outline-none focus:border-gold-accent transition text-text-dark placeholder-gray-400">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-widest text-text-gray mb-2">Telefon
+                                Numaranız</label>
+                            <input type="tel" name="phone"
+                                class="w-full bg-[#FDFCF8] border border-gray-200 p-3 focus:outline-none focus:border-gold-accent transition text-text-dark placeholder-gray-400">
+                        </div>
+
+                        <div>
+                            <label
+                                class="block text-xs font-bold uppercase tracking-widest text-text-gray mb-2">Mesajınız</label>
+                            <textarea name="message" rows="4" required
+                                class="w-full bg-[#FDFCF8] border border-gray-200 p-3 focus:outline-none focus:border-gold-accent transition text-text-dark placeholder-gray-400"></textarea>
+                        </div>
+
+                        <button type="submit"
+                            class="w-full bg-text-dark text-white font-bold uppercase tracking-[0.2em] py-4 text-xs hover:bg-gold-accent transition duration-300">
+                            Gönder
+                        </button>
+                    </form>
+                </div>
+
+                <div class="flex flex-col justify-center">
+                    <div class="mb-10">
+                        <span
+                            class="text-gold-matte font-bold text-xs tracking-[0.2em] uppercase block mb-2">Konum</span>
+                        <h2 class="font-serif text-4xl text-text-dark">İletişim Bilgileri</h2>
+                    </div>
+
+                    <div class="space-y-10">
+                        <div class="flex group">
+                            <div class="mr-6 pt-1">
+                                <div
+                                    class="w-10 h-10 border border-gold-matte/30 rounded-full flex items-center justify-center">
+                                    <i class="fa-solid fa-location-dot text-gold-matte"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-serif text-lg text-text-dark mb-2 font-bold">Ofis Adresi</h4>
+                                <p class="text-text-gray leading-relaxed font-light">
+                                    Merkez Mahallesi Ayazma Yolu Caddesi <br>
+                                    <span class="font-semibold text-text-dark">Nef 11 Rezidans</span> <br>
+                                    Kat:3 Daire:43 <br>
+                                    Kağıthane / İstanbul
+                                </p>
+                                <a href="https://goo.gl/maps/placeholder" target="_blank"
+                                    class="inline-block mt-3 text-xs font-bold text-gold-matte border-b border-gold-matte pb-0.5 hover:text-text-dark hover:border-text-dark transition">
+                                    HARİTADA GÖSTER
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="flex group">
+                            <div class="mr-6 pt-1">
+                                <div
+                                    class="w-10 h-10 border border-gold-matte/30 rounded-full flex items-center justify-center">
+                                    <i class="fa-regular fa-envelope text-gold-matte"></i>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="font-serif text-lg text-text-dark mb-2 font-bold">E-Posta & Telefon</h4>
+                                <a href="mailto:merveaydoganav@gmail.com"
+                                    class="text-text-gray font-light hover:text-gold-accent transition block mb-1">
+                                    merveaydoganav@gmail.com
+                                </a>
+                                <p class="text-xs text-gray-400 mt-2">* Mesai saatleri içerisinde dönüş yapılmaktadır.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#1a1818] text-cream-light pt-16 pb-8 border-t-4 border-gold-matte">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12">
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+
+                <div class="col-span-1 lg:col-span-1">
+                    <h4 class="font-serif text-2xl text-white mb-4">AV. MERVE AYDOĞAN</h4>
+                    <p class="text-white/60 text-sm leading-relaxed mb-6">
+                        Hukuki süreçlerinizde güvenilir, şeffaf ve çözüm odaklı danışmanlık hizmeti.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#"
+                            class="w-8 h-8 bg-white/5 rounded flex items-center justify-center text-white/60 hover:bg-gold-accent hover:text-white transition">
+                            <i class="fa-brands fa-linkedin-in text-xs"></i>
+                        </a>
+                        <a href="mailto:merveaydoganav@gmail.com"
+                            class="w-8 h-8 bg-white/5 rounded flex items-center justify-center text-white/60 hover:bg-gold-accent hover:text-white transition">
+                            <i class="fa-regular fa-envelope text-xs"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div>
+                    <h5 class="text-gold-matte text-xs font-bold uppercase tracking-widest mb-6">Site Haritası</h5>
+                    <ul class="space-y-3">
+                        <li><a href="#anasayfa"
+                                class="text-white/60 text-sm hover:text-gold-accent transition">Anasayfa</a></li>
+                        <li><a href="#hakkimda"
+                                class="text-white/60 text-sm hover:text-gold-accent transition">Hakkımda</a></li>
+                        <li><a href="#iletisim"
+                                class="text-white/60 text-sm hover:text-gold-accent transition">İletişim</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="text-gold-matte text-xs font-bold uppercase tracking-widest mb-6">Faaliyet Alanları</h5>
+                    <ul class="space-y-3">
+                        <li class="text-white/60 text-sm">Aile Hukuku</li>
+                        <li class="text-white/60 text-sm">Ceza Hukuku</li>
+                        <li class="text-white/60 text-sm">İş Hukuku</li>
+                        <li class="text-white/60 text-sm">İdare Hukuku</li>
+                        <li class="text-white/60 text-sm">İcra ve İflas Hukuku</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h5 class="text-gold-matte text-xs font-bold uppercase tracking-widest mb-6">Yasal Uyarı</h5>
+                    <p class="text-white/40 text-xs leading-relaxed">
+                        Bu web sitesinde yer alan bilgiler, Türkiye Barolar Birliği'nin Meslek Kurallarına ve Reklam
+                        Yasağı Yönetmeliğine uygun olarak hazırlanmıştır. Sitedeki bilgiler yalnızca bilgilendirme
+                        amaçlıdır.
+                    </p>
+                </div>
+
+            </div>
+
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-white/30 text-xs font-light">
+                    © 2024 Av. Merve Aydoğan. Tüm Hakları Saklıdır.
+                </p>
+                <p class="text-white/30 text-xs font-light">
+                    İstanbul Barosu
+                </p>
+            </div>
+
+        </div>
+    </footer>
+
+    <script>
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+
+</html>
